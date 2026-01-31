@@ -1,0 +1,28 @@
+name: Validate UI Strings
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-strings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate UI Strings
+        uses: ddnetters/stringly-typed@v1
+        with:
+          files: "**/*.{ts,js,md}"
+          checker: brand_style
+          checker-options: |
+            {
+              "model": "gpt-4o-mini"
+            }
+          style-guide-file: STYLE_GUIDE.md
+          decider: noCritical
+          comment: on-failure
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
