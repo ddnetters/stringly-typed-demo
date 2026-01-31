@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   validate-strings:
     runs-on: ubuntu-latest
@@ -23,7 +27,8 @@ jobs:
             }
           style-guide-file: STYLE_GUIDE.md
           decider: noCritical
-          comment: on-failure
+          comment: always
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENAI_BASE_URL: https://openrouter.ai/api/v1
