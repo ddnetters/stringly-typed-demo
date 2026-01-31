@@ -23,7 +23,7 @@ jobs:
             }
           style-guide-file: STYLE_GUIDE.md
           decider: noCritical
-          comment: on-failure
+          comment: always
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
