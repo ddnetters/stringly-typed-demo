@@ -24,3 +24,4 @@ The `src/bad-examples.ts` file contains intentional violations:
 - Strings that are too long
 
 The `src/good-examples.ts` file shows compliant strings.
+
